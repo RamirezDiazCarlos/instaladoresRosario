@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "slug": "tecnico-ejemplo",
+    "name": "Técnico Ejemplo",
+    "photo": "",
+    "matricula": "12345",
+    "zones": ["Rosario", "Funes"],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo"
+    ],
+    "phone": "5493411234567",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": true,
+    "description": "Técnico instalador de aire acondicionado con amplia experiencia en instalación de equipos split y multi-split. Atiendo Rosario y alrededores."
+  }
+]

@@ -1,0 +1,89 @@
+---
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  questions: FAQItem[];
+}
+
+const { questions } = Astro.props;
+---
+
+<section class="relative bg-[#0d1620] py-16 sm:py-20 overflow-hidden">
+
+  <div
+    class="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
+    aria-hidden="true"
+    style="background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 65%);"
+  />
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-[1fr_2fr] gap-6 mb-12 scroll-reveal items-end">
+      <div>
+        <p class="text-[10px] font-semibold text-ice/60 uppercase tracking-[0.2em] mb-4">
+          Preguntas frecuentes
+        </p>
+        <h2 class="font-display font-800 text-white text-4xl sm:text-5xl tracking-tight leading-[0.95]">
+          Lo que<br />necesitás saber
+        </h2>
+      </div>
+      <p class="text-white/30 text-sm leading-relaxed max-w-md lg:pb-1">
+        Todo sobre la instalación y mantenimiento de aire acondicionado en Rosario y el Gran Rosario.
+      </p>
+    </div>
+
+    <div class="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-6">
+      <div class="hidden lg:block" aria-hidden="true" />
+
+      <div>
+        {questions.map((item, i) => (
+          <details class="group border-b border-white/[0.08] first:border-t first:border-white/[0.08] open:border-white/[0.12] transition-colors duration-300">
+            <summary class="flex items-center gap-5 py-5 cursor-pointer select-none">
+
+              <span class="font-mono text-[11px] text-ice/50 group-open:text-ice/80 group-hover:text-ice/70 flex-shrink-0 w-6 transition-colors duration-200 tabular-nums">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+
+              <span class="flex-1 font-display font-700 text-white/75 group-hover:text-white group-open:text-white text-[15px] sm:text-base leading-snug transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                {item.q}
+              </span>
+
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                class="flex-shrink-0 text-white/20 group-hover:text-ice/50 group-open:rotate-180 group-open:text-ice/70 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                aria-hidden="true"
+              >
+                <path d="M2 5L7 10L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+
+            <div class="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              <div class="overflow-hidden">
+                <div class="flex gap-5 pb-6 pt-1">
+                  <span class="w-6 flex-shrink-0" aria-hidden="true" />
+                  <div class="flex gap-4 border-l-2 border-ice/30 pl-4">
+                    <p class="text-white/40 text-sm leading-relaxed">
+                      {item.a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details summary::marker { display: none; }
+</style>

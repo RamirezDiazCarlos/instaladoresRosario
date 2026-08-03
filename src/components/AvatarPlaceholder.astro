@@ -1,0 +1,55 @@
+---
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 128 180"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid slice"
+  class="w-full h-full"
+  role="img"
+  aria-label={`Avatar de ${name}`}
+>
+  <rect width="128" height="180" fill="#0f1923"/>
+
+  <ellipse cx="64" cy="50" rx="50" ry="40" fill="#38bdf8" opacity="0.05"/>
+
+  <circle cx="64" cy="70" r="22" stroke="#38bdf8" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="64" cy="70" r="15" stroke="#38bdf8" stroke-width="0.75" stroke-dasharray="2 5" opacity="0.2" stroke-linecap="round"/>
+  <circle cx="64" cy="70" r="3.5" fill="#38bdf8" opacity="0.25"/>
+
+  <path
+    d="M18 150 C18 116 110 116 110 150"
+    stroke="#38bdf8"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    opacity="0.45"
+  />
+  <path
+    d="M34 150 C34 126 94 126 94 150"
+    stroke="#38bdf8"
+    stroke-width="0.75"
+    stroke-linecap="round"
+    opacity="0.18"
+  />
+
+  <!-- copo de nieve decorativo -->
+  <line x1="64" y1="155" x2="64" y2="175" stroke="#38bdf8" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+  <line x1="54" y1="160" x2="74" y2="170" stroke="#38bdf8" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+  <line x1="54" y1="170" x2="74" y2="160" stroke="#38bdf8" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+  <circle cx="64" cy="165" r="3" fill="#38bdf8" opacity="0.22"/>
+
+  <!-- ticks de esquina -->
+  <line x1="8" y1="8" x2="16" y2="8" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="8" y1="8" x2="8" y2="16" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="120" y1="8" x2="112" y2="8" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="120" y1="8" x2="120" y2="16" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="8" y1="172" x2="16" y2="172" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="8" y1="172" x2="8" y2="164" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="120" y1="172" x2="112" y2="172" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+  <line x1="120" y1="172" x2="120" y2="164" stroke="#38bdf8" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+</svg>

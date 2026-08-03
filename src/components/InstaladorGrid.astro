@@ -1,0 +1,197 @@
+---
+import instaladores from '../data/instaladores.json';
+import InstaladorCard from './InstaladorCard.astro';
+
+const INITIAL_LIMIT = 6;
+
+const sorted = [...instaladores].sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return b.rating - a.rating;
+});
+
+const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
+---
+
+<section id="profesionales" class="py-20 sm:py-24 bg-cool-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 scroll-reveal">
+      <div>
+        <p class="text-[10px] font-semibold text-ice/70 uppercase tracking-[0.2em] mb-3">
+          Técnicos de Rosario
+        </p>
+        <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+          Encontrá el tuyo.
+        </h2>
+      </div>
+      <p class="text-cool-800/60 text-sm max-w-[220px] leading-relaxed sm:text-right pb-1">
+        Zonas y servicios en cada perfil. Contacto directo por WhatsApp.
+      </p>
+    </div>
+
+    <div id="instalador-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 stagger-children">
+      {sorted.map((instalador, i) => (
+        <div
+          data-card
+          data-index={i}
+          data-zones={instalador.zones.join(',')}
+          data-services={instalador.services.join(',')}
+          class="h-full"
+        >
+          <InstaladorCard instalador={instalador} />
+        </div>
+      ))}
+    </div>
+
+    {hiddenCount > 0 && (
+      <div id="show-more-wrapper" class="mt-8 flex justify-center">
+        <button
+          id="show-more-btn"
+          type="button"
+          class="group inline-flex items-center gap-2.5 px-5 py-2.5 bg-white border border-cool-200/70 hover:border-ice/25 hover:bg-ice/[0.03] rounded-xl text-[13px] font-medium text-cool-800 hover:text-ice transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:-translate-y-px"
+        >
+          Ver <span id="show-more-count">{hiddenCount}</span> profesionales más
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="group-hover:translate-y-0.5 transition-transform duration-200" aria-hidden="true">
+            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    )}
+
+    <div id="no-results" class="hidden">
+      <div class="py-20 flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-2xl bg-cool-100 border border-cool-200 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-cool-800/50" aria-hidden="true">
+            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 9H11M9 7V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="font-display font-700 text-dark text-base mb-1">Sin resultados</p>
+        <p class="text-cool-800/60 text-sm max-w-xs">Probá con otros filtros o limpiá la búsqueda.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const INITIAL_LIMIT = 6;
+  let expanded = false;
+  let filterOverflowCards: HTMLElement[] = [];
+
+  const allCards = Array.from(document.querySelectorAll<HTMLElement>('[data-card]'));
+  const overflowCards = allCards.filter((_, i) => i >= INITIAL_LIMIT);
+  const showMoreBtn = document.getElementById('show-more-btn') as HTMLButtonElement | null;
+  const showMoreWrapper = document.getElementById('show-more-wrapper');
+  const showMoreCount = document.getElementById('show-more-count');
+
+  function hideOverflow() {
+    overflowCards.forEach(c => { c.style.display = 'none'; });
+    showMoreWrapper?.classList.remove('hidden');
+  }
+
+  function showAll() {
+    overflowCards.forEach(c => { c.style.display = ''; });
+    showMoreWrapper?.classList.add('hidden');
+  }
+
+  if (overflowCards.length > 0) hideOverflow();
+
+  document.addEventListener('filter-change', (e) => {
+    const { hasFilter } = (e as CustomEvent).detail;
+    filterOverflowCards = [];
+
+    if (hasFilter) {
+      const visibleAfterFilter = allCards.filter(c => c.style.display !== 'none');
+      filterOverflowCards = visibleAfterFilter.slice(INITIAL_LIMIT);
+      filterOverflowCards.forEach(c => { c.style.display = 'none'; });
+
+      if (filterOverflowCards.length > 0) {
+        if (showMoreCount) showMoreCount.textContent = String(filterOverflowCards.length);
+        showMoreWrapper?.classList.remove('hidden');
+      } else {
+        showMoreWrapper?.classList.add('hidden');
+      }
+    } else {
+      if (!expanded) {
+        hideOverflow();
+        if (showMoreCount) showMoreCount.textContent = String(overflowCards.length);
+      }
+    }
+  });
+
+  showMoreBtn?.addEventListener('click', () => {
+    if (filterOverflowCards.length > 0) {
+      filterOverflowCards.forEach(c => { c.style.display = ''; });
+      filterOverflowCards = [];
+      showMoreWrapper?.classList.add('hidden');
+    } else {
+      expanded = true;
+      showAll();
+    }
+  });
+</script>
+
+<section id="como-funciona" class="py-24 sm:py-32 bg-[#0d1620] overflow-hidden relative">
+
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" aria-hidden="true"
+    style="background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 65%);">
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="mb-16 scroll-reveal">
+      <p class="text-[10px] font-semibold text-ice/60 uppercase tracking-[0.2em] mb-3">
+        Sin intermediarios
+      </p>
+      <h2 class="font-display font-800 text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-3">
+        Tres pasos,<br/> sin vueltas.
+      </h2>
+      <p class="text-white/30 text-sm leading-relaxed">
+        Sin registros. Sin comisiones. Solo contacto directo.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-2xl overflow-hidden stagger-children">
+
+      {[
+        {
+          n: "01",
+          title: "Filtrá por zona o servicio",
+          body: "Elegí el barrio que necesitás y el tipo de trabajo que querés hacer.",
+        },
+        {
+          n: "02",
+          title: "Revisá el perfil",
+          body: "Revisá zonas, servicios y descripción de cada profesional.",
+        },
+        {
+          n: "03",
+          title: "Contactá por WhatsApp",
+          body: "Directo con el técnico, sin comisiones ni formularios.",
+        },
+      ].map(({ n, title, body }) => (
+        <div class="relative flex flex-col gap-6 p-8 lg:p-10 bg-[#0d1620] hover:bg-white/[0.04] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+          <div class="relative w-fit">
+            <span
+              class="font-display font-800 text-[96px] leading-none tracking-[-0.04em] select-none"
+              style="color: transparent; -webkit-text-stroke: 1px rgba(56,189,248,0.18);"
+              aria-hidden="true"
+            >
+              {n}
+            </span>
+            <span class="absolute bottom-2 left-1 w-1.5 h-1.5 rounded-full bg-ice/70 inline-block"></span>
+          </div>
+
+          <div>
+            <h3 class="font-display font-700 text-white text-base mb-2.5">{title}</h3>
+            <p class="text-white/35 text-sm leading-relaxed max-w-[220px]">{body}</p>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>

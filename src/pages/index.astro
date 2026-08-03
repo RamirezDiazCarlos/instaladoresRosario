@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import QuickAnswer from '../components/QuickAnswer.astro';
+import SearchFilter from '../components/SearchFilter.astro';
+import InstaladorGrid from '../components/InstaladorGrid.astro';
+import ZoneSections from '../components/ZoneSections.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import ListYourself from '../components/ListYourself.astro';
+import Footer from '../components/Footer.astro';
+import instaladores from '../data/instaladores.json';
+
+const FAQ_ITEMS = [
+  {
+    q: "¿Cómo encuentro un instalador de aire acondicionado en Rosario?",
+    a: "En InstaladoresRosario.com.ar encontrás un directorio de técnicos instaladores de aire acondicionado. Podés filtrar por zona (Centro, Fisherton, Pichincha, Echesortu, entre otros barrios) y por servicio (instalación de split, carga de gas refrigerante, mantenimiento, reparación). Cada profesional se contacta directo por WhatsApp, sin intermediarios ni comisiones.",
+  },
+  {
+    q: "¿Cuánto cuesta instalar un split en Rosario?",
+    a: "El costo de instalación de un split en Rosario varía según la complejidad del trabajo, la distancia entre las unidades interior y exterior, si se necesita tendido eléctrico adicional y la capacidad del equipo (frigorías/BTU). Los precios en Argentina se actualizan con frecuencia, así que te recomendamos pedir presupuesto directamente a los técnicos del directorio para obtener valores al día.",
+  },
+  {
+    q: "¿Cada cuánto hay que hacer mantenimiento al aire acondicionado?",
+    a: "Los filtros conviene limpiarlos vos mismo cada 2 a 4 semanas durante la temporada de uso intensivo. El mantenimiento técnico completo (limpieza profunda de evaporador y condensador, verificación de gas refrigerante y revisión del drenaje) se recomienda al menos una vez al año, preferentemente antes de la temporada de calor (octubre-noviembre). Un equipo bien mantenido consume menos energía y dura más años.",
+  },
+  {
+    q: "¿Cómo sé qué capacidad de aire necesito? (frigorías/BTU)",
+    a: "La regla general es calcular 100 frigorías por metro cuadrado. Para un ambiente de 20m² necesitás aproximadamente 2.000 frigorías, por lo que un split de 2.500 frigorías suele ser la opción más cercana disponible. Factores como la orientación del ambiente, cantidad de ventanas, aislación térmica y cantidad de personas pueden aumentar el requerimiento. Un técnico del directorio puede asesorarte para elegir el equipo correcto.",
+  },
+  {
+    q: "¿Qué incluye una instalación completa de split?",
+    a: "Una instalación completa incluye: montaje de la unidad interior (evaporadora) y exterior (condensadora), tendido de cañerías de cobre con aislación, conexión eléctrica dedicada con llave termomagnética y diferencial, perforación de pared para el paso de caños, puesta en marcha y verificación de hermeticidad del circuito. Algunos técnicos incluyen los materiales en el presupuesto.",
+  },
+  {
+    q: "¿Puedo instalar un aire acondicionado yo mismo?",
+    a: "No es recomendable. La instalación de un aire acondicionado requiere conocimientos técnicos en refrigeración, electricidad y manipulación de gas refrigerante. Una instalación incorrecta puede generar fugas de gas, consumo excesivo de energía, daño al compresor, problemas eléctricos e incluso riesgos de seguridad. Siempre contratá a un técnico con experiencia en el rubro para garantizar una instalación segura y eficiente.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a,
+    },
+  })),
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Instaladores de aire acondicionado en Rosario, Santa Fe",
+  "description": "Directorio de técnicos instaladores de aire acondicionado en el Gran Rosario",
+  "url": "https://instaladoresrosario.com.ar",
+  "numberOfItems": instaladores.length,
+  "itemListElement": instaladores.map((g, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "LocalBusiness",
+      "name": `${g.name} — Instalador de Aire Acondicionado en Rosario`,
+      "url": `https://instaladoresrosario.com.ar/${g.slug}`,
+      ...(g.phone ? { "telephone": `+${g.phone}` } : {}),
+      "identifier": g.matricula,
+      "areaServed": g.zones.map(z => ({ "@type": "Place", "name": `${z}, Santa Fe, Argentina` })),
+    },
+  })),
+};
+---
+
+<Layout
+  title="Instaladores de Aire Acondicionado en Rosario | Directorio de Técnicos"
+  description={`Directorio de ${instaladores.length} técnicos instaladores de aire acondicionado en Rosario y alrededores. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.`}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(itemListSchema)} />
+  </Fragment>
+
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <QuickAnswer />
+    <div>
+      <SearchFilter />
+      <InstaladorGrid />
+    </div>
+    <ZoneSections />
+    <Testimonials />
+    <FAQ questions={FAQ_ITEMS} />
+    <ListYourself />
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #profesionales {
+    scroll-margin-top: 76px;
+  }
+  #como-funciona {
+    scroll-margin-top: 76px;
+  }
+  #listar {
+    scroll-margin-top: 76px;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(2px);
+    transition:
+      opacity 0.7s cubic-bezier(0.32, 0.72, 0, 1),
+      transform 0.7s cubic-bezier(0.32, 0.72, 0, 1),
+      filter 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(2px);
+    transition:
+      opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+      transform 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+      filter 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .stagger-children.visible > * { opacity:1; transform:translateY(0); filter:blur(0); }
+  .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
+  .stagger-children.visible > *:nth-child(2) { transition-delay: 80ms; }
+  .stagger-children.visible > *:nth-child(3) { transition-delay: 160ms; }
+  .stagger-children.visible > *:nth-child(4) { transition-delay: 240ms; }
+  .stagger-children.visible > *:nth-child(5) { transition-delay: 320ms; }
+  .stagger-children.visible > *:nth-child(6) { transition-delay: 400ms; }
+  .stagger-children.visible > *:nth-child(n+7) { transition-delay: 480ms; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+  );
+
+  document.querySelectorAll('.scroll-reveal, .stagger-children').forEach(el => observer.observe(el));
+</script>

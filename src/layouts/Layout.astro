@@ -1,0 +1,128 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalURL?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Instaladores de Aire Acondicionado en Rosario | Directorio de Técnicos",
+  description = "Directorio de técnicos instaladores de aire acondicionado en Rosario y alrededores. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.",
+  canonicalURL = Astro.url.href,
+  ogImage = "https://instaladoresrosario.com.ar/og-image.jpeg",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="InstaladoresRosario" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Canonical + Sitemap -->
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- fuentes (no bloqueantes) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+      />
+    </noscript>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>{title}</title>
+
+    <!-- JSON-LD: WebSite + Organization -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://instaladoresrosario.com.ar/#website",
+            "name": "InstaladoresRosario",
+            "description": "Directorio de técnicos instaladores de aire acondicionado en Rosario, Santa Fe",
+            "url": "https://instaladoresrosario.com.ar",
+            "inLanguage": "es-AR"
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://instaladoresrosario.com.ar/#organization",
+            "name": "InstaladoresRosario",
+            "url": "https://instaladoresrosario.com.ar",
+            "description": "Directorio de técnicos instaladores de aire acondicionado en Rosario, Santa Fe.",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://instaladoresrosario.com.ar/favicon-96x96.png"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Rosario",
+              "addressRegion": "Santa Fe",
+              "addressCountry": "AR"
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": "Rosario",
+              "containedInPlace": { "@type": "State", "name": "Santa Fe" }
+            },
+            "sameAs": []
+          }
+        ]
+      }
+    </script>
+
+    <!-- Named slot for page-level head content (JSON-LD, etc.) -->
+    <slot name="head" />
+  </head>
+  <body class="bg-dark font-sans antialiased text-cool-900">
+    <slot />
+  </body>
+</html>
