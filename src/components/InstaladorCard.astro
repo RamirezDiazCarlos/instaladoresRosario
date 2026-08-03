@@ -1,24 +1,10 @@
 ---
-interface Instalador {
-  id: string;
-  slug: string;
-  name: string;
-  photo: string;
-  matricula: string;
-  zones: string[];
-  services: string[];
-  phone: string;
-  rating: number;
-  reviews: number;
-  featured: boolean;
-  description: string;
-}
+import AvatarPlaceholder from './AvatarPlaceholder.astro';
+import type { Instalador } from '../data/instaladores';
 
 interface Props {
   instalador: Instalador;
 }
-
-import AvatarPlaceholder from './AvatarPlaceholder.astro';
 
 const { instalador } = Astro.props;
 

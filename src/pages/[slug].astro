@@ -3,7 +3,8 @@ import type { GetStaticPaths } from 'astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import instaladores from '../data/instaladores.json';
+import instaladores from '../data/instaladores';
+import type { Instalador } from '../data/instaladores';
 import AvatarPlaceholder from '../components/AvatarPlaceholder.astro';
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -12,21 +13,6 @@ export const getStaticPaths: GetStaticPaths = () => {
     props: { instalador: g },
   }));
 };
-
-interface Instalador {
-  id: string;
-  slug: string;
-  name: string;
-  photo: string;
-  matricula: string;
-  zones: string[];
-  services: string[];
-  phone: string;
-  rating: number;
-  reviews: number;
-  featured: boolean;
-  description: string;
-}
 
 const { instalador } = Astro.props as { instalador: Instalador };
 
