@@ -41,13 +41,15 @@ const jsonLd = {
     "addressRegion": "Santa Fe",
     "addressCountry": "AR"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": instalador.rating,
-    "reviewCount": instalador.reviews,
-    "bestRating": 5,
-    "worstRating": 1
-  },
+  ...(instalador.reviews > 0 ? {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": instalador.rating,
+      "reviewCount": instalador.reviews,
+      "bestRating": 5,
+      "worstRating": 1
+    }
+  } : {}),
   "additionalProperty": {
     "@type": "PropertyValue",
     "name": "Certificación declarada",

@@ -27,15 +27,15 @@ const FAQ_ITEMS = [
   },
   {
     q: "¿Cómo sé qué capacidad de aire necesito? (frigorías/BTU)",
-    a: "La regla general es calcular 100 frigorías por metro cuadrado. Para un ambiente de 20m² necesitás aproximadamente 2.000 frigorías, por lo que un split de 2.500 frigorías suele ser la opción más cercana disponible. Factores como la orientación del ambiente, cantidad de ventanas, aislación térmica y cantidad de personas pueden aumentar el requerimiento. Un técnico del directorio puede asesorarte para elegir el equipo correcto.",
+    a: "La regla general, usada habitualmente por fabricantes e instaladores, es calcular 100 frigorías por metro cuadrado. Para un ambiente de 20m² necesitás aproximadamente 2.000 frigorías, por lo que un split de 2.500 frigorías suele ser la opción más cercana disponible. Factores como la orientación del ambiente, cantidad de ventanas, aislación térmica y cantidad de personas pueden aumentar el requerimiento. Un técnico del directorio puede asesorarte para elegir el equipo correcto.",
   },
   {
     q: "¿Qué incluye una instalación completa de split?",
-    a: "Una instalación completa incluye: montaje de la unidad interior (evaporadora) y exterior (condensadora), tendido de cañerías de cobre con aislación, conexión eléctrica dedicada con llave termomagnética y diferencial, perforación de pared para el paso de caños, puesta en marcha y verificación de hermeticidad del circuito. Algunos técnicos incluyen los materiales en el presupuesto.",
+    a: "Una instalación completa incluye: montaje de la unidad interior (evaporadora) y exterior (condensadora), tendido de cañerías de cobre con aislación, conexión eléctrica dedicada con llave termomagnética y diferencial (tal como exige la reglamentación de la Asociación Electrotécnica Argentina para este tipo de instalaciones), perforación de pared para el paso de caños, puesta en marcha y verificación de hermeticidad del circuito. Algunos técnicos incluyen los materiales en el presupuesto.",
   },
   {
     q: "¿Puedo instalar un aire acondicionado yo mismo?",
-    a: "No es recomendable. La instalación de un aire acondicionado requiere conocimientos técnicos en refrigeración, electricidad y manipulación de gas refrigerante. Una instalación incorrecta puede generar fugas de gas, consumo excesivo de energía, daño al compresor, problemas eléctricos e incluso riesgos de seguridad. Siempre contratá a un técnico con experiencia en el rubro para garantizar una instalación segura y eficiente.",
+    a: "No es recomendable. La instalación de un aire acondicionado requiere conocimientos técnicos en refrigeración, electricidad y manipulación de gas refrigerante. Una instalación incorrecta puede generar fugas de gas, consumo excesivo de energía, daño al compresor, problemas eléctricos e incluso riesgos de seguridad. Además, la mayoría de los fabricantes invalida la garantía del equipo si la instalación no fue realizada por un técnico habilitado. Siempre contratá a un técnico con experiencia en el rubro para garantizar una instalación segura y eficiente.",
   },
 ];
 
@@ -76,11 +76,15 @@ const itemListSchema = {
 
 <Layout
   title="Instaladores de Aire Acondicionado en Rosario | Directorio de Técnicos"
-  description={`Directorio de ${instaladores.length} técnicos instaladores de aire acondicionado en Rosario y alrededores. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.`}
+  description={instaladores.length > 0
+    ? `Directorio de ${instaladores.length} técnicos instaladores de aire acondicionado en Rosario y alrededores. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.`
+    : `Directorio de técnicos instaladores de aire acondicionado en Rosario y alrededores. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.`}
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(itemListSchema)} />
+    {instaladores.length > 0 && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(itemListSchema)} />
+    )}
   </Fragment>
 
   <Header />
@@ -88,10 +92,10 @@ const itemListSchema = {
     <Hero />
     <QuickAnswer />
     <div>
-      <SearchFilter />
+      {instaladores.length > 0 && <SearchFilter />}
       <InstaladorGrid />
     </div>
-    <ZoneSections />
+    {instaladores.length > 0 && <ZoneSections />}
     <Testimonials />
     <FAQ questions={FAQ_ITEMS} />
     <ListYourself />

@@ -98,11 +98,18 @@ const total = instaladores.length;
           class="flex flex-wrap items-center gap-2 opacity-0 translate-y-3"
           style="animation: heroFadeUp 0.7s cubic-bezier(0.32,0.72,0,1) 0.62s forwards;"
         >
-          <span class="inline-flex items-center gap-1.5 text-[11px] text-white/50 bg-white/[0.05] border border-white/[0.08] px-3 py-1.5 rounded-full">
-            <span class="w-1.5 h-1.5 rounded-full bg-ice animate-pulse inline-block flex-shrink-0"></span>
-            <strong class="text-white/75 font-semibold font-mono">{total}</strong>
-            <span>profesionales</span>
-          </span>
+          {total > 0 ? (
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-white/50 bg-white/[0.05] border border-white/[0.08] px-3 py-1.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-ice animate-pulse inline-block flex-shrink-0"></span>
+              <strong class="text-white/75 font-semibold font-mono">{total}</strong>
+              <span>profesionales</span>
+            </span>
+          ) : (
+            <span class="inline-flex items-center gap-1.5 text-[11px] text-white/50 bg-white/[0.05] border border-white/[0.08] px-3 py-1.5 rounded-full">
+              <span class="w-1.5 h-1.5 rounded-full bg-ice animate-pulse inline-block flex-shrink-0"></span>
+              Directorio recién lanzado
+            </span>
+          )}
           <span class="inline-flex items-center gap-1.5 text-[11px] text-white/50 bg-white/[0.05] border border-white/[0.08] px-3 py-1.5 rounded-full">
             Rosario y alrededores
           </span>
