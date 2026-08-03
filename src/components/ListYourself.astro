@@ -239,7 +239,7 @@ const zoneEntries = Object.entries(ZONES);
               Todo Rosario
             </button>
 
-            <div class="rounded-xl border border-white/10 bg-dark-3 overflow-hidden">
+            <div id="zone-picker-box" class="rounded-xl border border-white/10 bg-dark-3 overflow-hidden">
               <div class="flex overflow-x-auto scrollbar-none border-b border-white/8" role="tablist" id="zone-tabs">
                 {zoneEntries.map(([group], i) => (
                   <button
@@ -347,12 +347,12 @@ const zoneEntries = Object.entries(ZONES);
             Enviar solicitud
           </button>
 
-          <div id="form-success" class="hidden rounded-xl border border-[#25D366]/30 bg-[#25D366]/10 px-4 py-3.5">
+          <div id="form-success" role="alert" aria-live="polite" class="hidden rounded-xl border border-[#25D366]/30 bg-[#25D366]/10 px-4 py-3.5">
             <p class="text-[#25D366] text-sm font-semibold">
               Solicitud enviada correctamente. Te contactamos pronto.
             </p>
           </div>
-          <div id="form-error" class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3.5">
+          <div id="form-error" role="alert" aria-live="polite" class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3.5">
             <p class="text-red-400 text-sm font-semibold">
               Hubo un error al enviar. Revisá los campos o intentá de nuevo.
             </p>
@@ -493,6 +493,7 @@ const zoneEntries = Object.entries(ZONES);
       const v = pill.dataset.value!;
       if (selected.has(v)) { selected.delete(v); pill.classList.remove("selected"); }
       else { selected.add(v); pill.classList.add("selected"); }
+      clearZonesInvalid();
       syncCounter(); syncHidden(); syncTabCounts(); syncTodosZonaBtn();
     });
   });
@@ -505,6 +506,7 @@ const zoneEntries = Object.entries(ZONES);
       if (allSel) { selected.delete(b); pill?.classList.remove("selected"); }
       else { selected.add(b); pill?.classList.add("selected"); }
     });
+    clearZonesInvalid();
     syncCounter(); syncHidden(); syncTabCounts(); syncTodosZonaBtn();
   });
 
@@ -513,6 +515,7 @@ const zoneEntries = Object.entries(ZONES);
     btnTodo.classList.toggle("selected", todoSelected);
     if (todoSelected) { selected.clear(); barriosPills.forEach((p) => p.classList.remove("selected")); }
     disableBarrios(todoSelected);
+    clearZonesInvalid();
     syncCounter(); syncHidden(); syncTabCounts(); syncTodosZonaBtn();
   });
 
@@ -533,6 +536,7 @@ const zoneEntries = Object.entries(ZONES);
       const v = pill.dataset.value!;
       if (selectedServices.has(v)) { selectedServices.delete(v); pill.classList.remove("selected"); }
       else { selectedServices.add(v); pill.classList.add("selected"); }
+      clearServicesInvalid();
       syncServices();
     });
   });
@@ -560,9 +564,28 @@ const zoneEntries = Object.entries(ZONES);
 
   const markInvalid = (el: HTMLElement) => {
     el.classList.add("!border-red-500/60");
-    el.addEventListener("input", () => el.classList.remove("!border-red-500/60"), { once: true });
-    el.addEventListener("change", () => el.classList.remove("!border-red-500/60"), { once: true });
+    el.setAttribute("aria-invalid", "true");
+    el.addEventListener("input", () => clearInvalid(el), { once: true });
+    el.addEventListener("change", () => clearInvalid(el), { once: true });
   };
+
+  const clearInvalid = (el: HTMLElement) => {
+    el.classList.remove("!border-red-500/60");
+    el.removeAttribute("aria-invalid");
+  };
+
+  const zonePickerBox = document.getElementById("zone-picker-box")!;
+
+  const clearZonesInvalid = () => {
+    clearInvalid(zonePickerBox);
+    clearInvalid(btnTodo);
+  };
+
+  const clearServicesInvalid = () => {
+    servicePills.forEach(p => clearInvalid(p));
+  };
+
+  const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   const validate = (): boolean => {
     let valid = true;
@@ -570,13 +593,17 @@ const zoneEntries = Object.entries(ZONES);
     const phone = document.getElementById("f-phone") as HTMLInputElement;
     const email = document.getElementById("f-email") as HTMLInputElement;
 
-    [name, phone, email].forEach(f => {
+    [name, phone].forEach(f => {
       if (!f.value.trim()) { markInvalid(f); valid = false; }
     });
 
+    if (!email.value.trim() || !isValidEmail(email.value.trim())) {
+      markInvalid(email);
+      valid = false;
+    }
+
     if (!todoSelected && selected.size === 0) {
-      const zonePicker = document.getElementById("zone-picker")!;
-      markInvalid(zonePicker.querySelector('.rounded-xl.border')!);
+      markInvalid(zonePickerBox);
       markInvalid(btnTodo);
       valid = false;
     }
@@ -618,8 +645,9 @@ const zoneEntries = Object.entries(ZONES);
         resetZones();
         resetServices();
         successMsg.classList.remove("hidden");
-      } else throw new Error();
-    } catch {
+      } else throw new Error(`Netlify respondió ${res.status}`);
+    } catch (err) {
+      console.error("Error al enviar el formulario de InstaladoresRosario:", err);
       errorMsg.querySelector("p")!.textContent = "Hubo un error al enviar. Revisá los campos o intentá de nuevo.";
       errorMsg.classList.remove("hidden");
     } finally {
