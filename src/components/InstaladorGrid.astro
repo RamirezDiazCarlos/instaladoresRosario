@@ -1,6 +1,7 @@
 ---
 import instaladores from '../data/instaladores';
 import InstaladorCard from './InstaladorCard.astro';
+import AvatarPlaceholder from './AvatarPlaceholder.astro';
 
 const INITIAL_LIMIT = 6;
 
@@ -76,22 +77,48 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
         </div>
       </Fragment>
     ) : (
-      <div class="py-16 flex flex-col items-center text-center scroll-reveal">
-        <div class="w-14 h-14 rounded-2xl bg-ice/10 border border-ice/20 flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" class="text-ice" aria-hidden="true">
-            <path d="M11 2C6.582 2 3 5.582 3 10c0 5.5 8 10 8 10s8-4.5 8-10c0-4.418-3.582-8-8-8Z" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="11" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <p class="font-display font-700 text-dark text-xl mb-2">Todavía no hay técnicos cargados</p>
-        <p class="text-cool-800/60 text-sm max-w-sm mb-6">
-          InstaladoresRosario recién arranca. Si sos técnico instalador de aire acondicionado, sumate y sé el primero en aparecer.
+      <div class="py-12 flex flex-col items-center scroll-reveal">
+        <p class="text-[10px] font-semibold text-ice/70 uppercase tracking-[0.2em] mb-3">
+          Todavía no hay técnicos
         </p>
+        <h3 class="font-display font-800 text-dark text-2xl sm:text-3xl tracking-tight text-center mb-8 max-w-xs">
+          Este espacio te espera a vos.
+        </h3>
+
+        <div class="w-full max-w-md p-[5px] rounded-[1.5rem] border-2 border-dashed border-ice/35 bg-ice/[0.03]">
+          <div class="relative rounded-[calc(1.5rem-5px)] overflow-hidden flex bg-white/70">
+            <div class="relative flex-shrink-0 w-28 sm:w-32 opacity-60">
+              <AvatarPlaceholder name="Publicá tu perfil en InstaladoresRosario" />
+            </div>
+
+            <div class="flex flex-col flex-1 p-4 sm:p-5 min-w-0 justify-center gap-2.5">
+              <p class="font-display font-700 text-cool-800/45 text-base sm:text-[17px] leading-tight w-fit border-b border-dashed border-cool-300 pb-0.5">
+                Tu nombre acá
+              </p>
+              <p class="text-[11px] text-cool-800/45 flex items-center gap-1.5">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="flex-shrink-0 opacity-60" aria-hidden="true">
+                  <path d="M5 1C3.619 1 2.5 2.119 2.5 3.5C2.5 5.5 5 9 5 9C5 9 7.5 5.5 7.5 3.5C7.5 2.119 6.381 1 5 1Z" stroke="currentColor" stroke-width="1.2"/>
+                  <circle cx="5" cy="3.5" r="1" fill="currentColor"/>
+                </svg>
+                Tu zona de cobertura
+              </p>
+              <div class="flex flex-wrap gap-1">
+                <span class="text-[10px] font-medium text-cool-800/40 border border-dashed border-cool-300 px-2 py-0.5 rounded-md">Tu servicio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <a
           href="#listar"
-          class="inline-flex items-center gap-2 bg-ice hover:bg-ice-dark text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-colors duration-200"
+          class="group mt-7 inline-flex items-center gap-2 bg-ice hover:bg-ice-dark text-white font-semibold text-sm pl-5 pr-2 py-2 rounded-xl transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-lg shadow-ice/20 active:scale-[0.98]"
         >
           Publicá tu perfil
+          <span class="w-7 h-7 rounded-full bg-black/15 flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+              <path d="M2 8L8 2M8 2H4M8 2V6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </a>
       </div>
     )}
