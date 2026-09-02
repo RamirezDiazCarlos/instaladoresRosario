@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "1",
+    "slug": "santiago-ariel-perez",
+    "name": "Santiago Ariel Perez",
+    "photo": "",
+    "matricula": "Curso Instalador de split realizado en instituto ITA. Rosario",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493476367669",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Me especializo en instalación, desinstalación y mantenimiento."
+  }
+]
