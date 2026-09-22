@@ -19,5 +19,28 @@
     "reviews": 0,
     "featured": false,
     "description": "Me especializo en instalación, desinstalación y mantenimiento."
+  },
+  {
+    "id": "2",
+    "slug": "german-garcia",
+    "name": "Germán García",
+    "photo": "",
+    "matricula": "Instalador de Split. Certificado IEC Rosario, Santa Fe",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493413692625",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "He prestado servicios para dos empresas familiares, con vehículo a cargo, realizando mantenimiento preventivo, limpieza, desinstalación e instalación de equipos nuevos, soldaduras, y también trabajando de manera personalizada. Asesoramiento en compra de kit y materiales. Ofreciendo toda la solución en instalación completa sin moverse de su casa."
   }
 ]
