@@ -12,6 +12,13 @@ const waMsg = encodeURIComponent('Hola, te contacto desde InstaladoresRosario.co
 const waLink = instalador.phone ? `https://wa.me/${instalador.phone}?text=${waMsg}` : null;
 const profileLink = `/${instalador.slug}`;
 
+// En la card mostramos nombre + apellido nomás (sin segundos nombres) para que entre
+// cómodo en una línea; el nombre completo se sigue usando en el resto del sitio.
+const nameParts = instalador.name.trim().split(/\s+/);
+const displayName = nameParts.length > 2
+  ? `${nameParts[0]} ${nameParts[nameParts.length - 1]}`
+  : instalador.name;
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "ProfessionalService"],
@@ -114,7 +121,7 @@ const jsonLd = {
           href={profileLink}
           class="hover:text-ice transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] focus-visible:outline-none focus-visible:text-ice"
         >
-          {instalador.name}
+          {displayName}
         </a>
       </h3>
 

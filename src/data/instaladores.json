@@ -42,5 +42,27 @@
     "reviews": 0,
     "featured": false,
     "description": "He prestado servicios para dos empresas familiares, con vehículo a cargo, realizando mantenimiento preventivo, limpieza, desinstalación e instalación de equipos nuevos, soldaduras, y también trabajando de manera personalizada. Asesoramiento en compra de kit y materiales. Ofreciendo toda la solución en instalación completa sin moverse de su casa."
+  },
+  {
+    "id": "3",
+    "slug": "fernando-alejandro-alegre",
+    "name": "Fernando Alejandro Alegre",
+    "photo": "",
+    "matricula": "",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493413625280",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Mi nombre es Fernando, soy técnico en refrigeración y aire acondicionado. Instalación y reparación de equipos inverter y on/off, limpieza y carga de gas — todo en split."
   }
 ]
