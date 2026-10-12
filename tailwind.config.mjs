@@ -4,37 +4,48 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Outfit', 'sans-serif'],
-        sans: ['DM Sans', 'sans-serif'],
+        display: ['Zilla Slab', 'Georgia', 'serif'],
+        sans: ['IBM Plex Sans', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
+        // Acento principal: teal de manómetro de carga de gas refrigerante.
         ice: {
-          DEFAULT: '#38bdf8',
-          light: '#7dd3fc',
-          dark: '#0ea5e9',
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          DEFAULT: '#0f8a7a',
+          light: '#6ec0ad',
+          dark: '#0b6a5d',
+          50: '#eaf6f3',
+          100: '#d1ece5',
+          200: '#a3d9cc',
+          300: '#6ec0ad',
+          400: '#0f8a7a',
+          500: '#0b6a5d',
+          600: '#0a5c52',
+          700: '#0a4941',
+          800: '#083a34',
+          900: '#06302b',
         },
+        // Tinta casi negra: texto y paneles oscuros tipo chapa/ficha técnica.
         dark: {
-          DEFAULT: '#0f1923',
-          2: '#1a2a3a',
-          3: '#243447',
+          DEFAULT: '#1b1d17',
+          2: '#262820',
+          3: '#30332a',
         },
+        // Gris neutro cálido (chapa/galvanizado), reemplaza el gris azulado anterior.
         cool: {
-          50: '#f0f9ff',
-          100: '#e0f4ff',
-          200: '#c7e8f7',
-          300: '#a3d5e8',
-          800: '#4a6a7a',
-          900: '#2a3d4d',
+          50: '#f6f6f2',
+          100: '#ecece5',
+          200: '#d8d8cd',
+          300: '#b7b7a8',
+          800: '#5c5c4e',
+          900: '#33332a',
+        },
+        // Color funcional reservado (etiqueta "Destacado"), como el amarillo de señalización.
+        signal: {
+          DEFAULT: '#d99a2b',
+          light: '#f0b955',
+          dark: '#b57c1c',
+          50: '#fdf6e9',
         },
       },
       animation: {

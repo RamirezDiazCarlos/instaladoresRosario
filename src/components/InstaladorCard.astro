@@ -54,48 +54,45 @@ const jsonLd = {
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
-<div
+<article
   class:list={[
-    "group h-full p-[5px] rounded-[1.5rem] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+    "group relative h-full border overflow-hidden flex transition-colors duration-300",
     instalador.featured
-      ? "bg-gradient-to-b from-ice/[0.24] to-ice/[0.08] border border-ice/[0.48] shadow-[0_0_0_1px_rgba(56,189,248,0.10),0_4px_28px_-4px_rgba(56,189,248,0.30)] hover:shadow-[0_0_0_1px_rgba(56,189,248,0.18),0_14px_48px_-8px_rgba(56,189,248,0.40)] hover:-translate-y-0.5"
-      : "bg-gradient-to-b from-cool-100/80 to-cool-50/60 border border-cool-200/80 shadow-[0_1px_8px_-2px_rgba(0,0,0,0.05),0_4px_16px_-8px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_32px_-8px_rgba(0,0,0,0.12)]"
+      ? "border-signal/70 bg-signal-50"
+      : "border-cool-200 bg-white hover:border-ice/40"
   ]}
+  aria-label={`Perfil de ${instalador.name}`}
 >
-  <article
-    class:list={[
-      "relative h-full rounded-[calc(1.5rem-5px)] overflow-hidden flex shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]",
-      instalador.featured ? "bg-[#f0f9ff]" : "bg-white"
-    ]}
-    aria-label={`Perfil de ${instalador.name}`}
-  >
-    <div class="relative flex-shrink-0 w-28 sm:w-32">
-      {instalador.featured && (
-        <div class="absolute top-2.5 left-2.5 z-10">
-          <span class="inline-flex items-center gap-1 bg-ice text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-[0_2px_12px_rgba(56,189,248,0.55)] uppercase tracking-wider ring-1 ring-white/20">
-            <svg width="8" height="8" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-              <path d="M5 1L6.2 3.6L9 4L7 5.9L7.5 8.6L5 7.3L2.5 8.6L3 5.9L1 4L3.8 3.6L5 1Z" fill="currentColor"/>
-            </svg>
-            Destacado
-          </span>
-        </div>
-      )}
-      <a href={profileLink} tabindex="-1" aria-hidden="true" class="block h-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105">
-        {instalador.photo
-          ? <img src={instalador.photo} alt={`Foto de ${instalador.name}`} class="w-full h-full object-cover" />
-          : <AvatarPlaceholder name={instalador.name} />
-        }
-      </a>
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/[0.04] pointer-events-none"></div>
-    </div>
+  {instalador.featured && (
+    <div class="absolute inset-x-0 top-0 h-[3px] bg-signal" aria-hidden="true"></div>
+  )}
+  <div class="relative flex-shrink-0 w-28 sm:w-32">
+    {instalador.featured && (
+      <div class="absolute top-0 left-0 z-10">
+        <span class="inline-flex items-center gap-1 bg-signal text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider">
+          <svg width="8" height="8" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M5 1L6.2 3.6L9 4L7 5.9L7.5 8.6L5 7.3L2.5 8.6L3 5.9L1 4L3.8 3.6L5 1Z" fill="currentColor"/>
+          </svg>
+          Destacado
+        </span>
+      </div>
+    )}
+    <a href={profileLink} tabindex="-1" aria-hidden="true" class="block h-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105">
+      {instalador.photo
+        ? <img src={instalador.photo} alt={`Foto de ${instalador.name}`} class="w-full h-full object-cover" />
+        : <AvatarPlaceholder name={instalador.name} />
+      }
+    </a>
+    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/[0.04] pointer-events-none"></div>
+  </div>
 
-    <div class="flex flex-col flex-1 p-4 sm:p-5 min-w-0">
+  <div class="flex flex-col flex-1 p-4 sm:p-5 min-w-0">
 
       <div class:list={["flex items-center gap-2 mb-3", instalador.matricula ? "justify-between" : "justify-end"]}>
         {instalador.matricula && (
           <a
             href={profileLink}
-            class="inline-flex items-center gap-1.5 text-[10px] font-600 text-ice-dark bg-ice-50 border border-ice/25 px-2.5 py-1 rounded-lg tracking-wide hover:bg-ice-100 hover:border-ice/40 transition-colors duration-200"
+            class="inline-flex items-center gap-1.5 text-[10px] font-600 text-ice-dark bg-ice-50 border border-ice/25 px-2.5 py-1 rounded tracking-wide hover:bg-ice-100 hover:border-ice/40 transition-colors duration-200"
             aria-label={`Ver certificación declarada de ${instalador.name}`}
           >
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" class="flex-shrink-0">
@@ -174,5 +171,4 @@ const jsonLd = {
       </div>
 
     </div>
-  </article>
-</div>
+</article>

@@ -52,7 +52,7 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
             <button
               id="show-more-btn"
               type="button"
-              class="group inline-flex items-center gap-2.5 px-5 py-2.5 bg-white border border-cool-200/70 hover:border-ice/25 hover:bg-ice/[0.03] rounded-xl text-[13px] font-medium text-cool-800 hover:text-ice transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:-translate-y-px"
+              class="group inline-flex items-center gap-2.5 px-5 py-2.5 bg-white border border-cool-200/70 hover:border-ice/25 hover:bg-ice/[0.03] rounded text-[13px] font-medium text-cool-800 hover:text-ice transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:-translate-y-px"
             >
               Ver <span id="show-more-count">{hiddenCount}</span> profesionales más
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="group-hover:translate-y-0.5 transition-transform duration-200" aria-hidden="true">
@@ -64,7 +64,7 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
 
         <div id="no-results" class="hidden">
           <div class="py-20 flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-2xl bg-cool-100 border border-cool-200 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+            <div class="w-12 h-12 rounded-md bg-cool-100 border border-cool-200 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-cool-800/50" aria-hidden="true">
                 <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -85,33 +85,31 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
           Este espacio te espera a vos.
         </h3>
 
-        <div class="w-full max-w-md p-[5px] rounded-[1.5rem] border-2 border-dashed border-ice/35 bg-ice/[0.03]">
-          <div class="relative rounded-[calc(1.5rem-5px)] overflow-hidden flex bg-white/70">
-            <div class="relative flex-shrink-0 w-28 sm:w-32 opacity-60">
-              <AvatarPlaceholder name="Publicá tu perfil en InstaladoresRosario" />
-            </div>
+        <div class="relative w-full max-w-md border-2 border-dashed border-ice/35 bg-ice/[0.03] overflow-hidden flex">
+          <div class="relative flex-shrink-0 w-28 sm:w-32 opacity-60">
+            <AvatarPlaceholder name="Publicá tu perfil en InstaladoresRosario" />
+          </div>
 
-            <div class="flex flex-col flex-1 p-4 sm:p-5 min-w-0 justify-center gap-2.5">
-              <p class="font-display font-700 text-cool-800/45 text-base sm:text-[17px] leading-tight w-fit border-b border-dashed border-cool-300 pb-0.5">
-                Tu nombre acá
-              </p>
-              <p class="text-[11px] text-cool-800/45 flex items-center gap-1.5">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="flex-shrink-0 opacity-60" aria-hidden="true">
-                  <path d="M5 1C3.619 1 2.5 2.119 2.5 3.5C2.5 5.5 5 9 5 9C5 9 7.5 5.5 7.5 3.5C7.5 2.119 6.381 1 5 1Z" stroke="currentColor" stroke-width="1.2"/>
-                  <circle cx="5" cy="3.5" r="1" fill="currentColor"/>
-                </svg>
-                Tu zona de cobertura
-              </p>
-              <div class="flex flex-wrap gap-1">
-                <span class="text-[10px] font-medium text-cool-800/40 border border-dashed border-cool-300 px-2 py-0.5 rounded-md">Tu servicio</span>
-              </div>
+          <div class="flex flex-col flex-1 p-4 sm:p-5 min-w-0 justify-center gap-2.5">
+            <p class="font-display font-700 text-cool-800/45 text-base sm:text-[17px] leading-tight w-fit border-b border-dashed border-cool-300 pb-0.5">
+              Tu nombre acá
+            </p>
+            <p class="text-[11px] text-cool-800/45 flex items-center gap-1.5">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="flex-shrink-0 opacity-60" aria-hidden="true">
+                <path d="M5 1C3.619 1 2.5 2.119 2.5 3.5C2.5 5.5 5 9 5 9C5 9 7.5 5.5 7.5 3.5C7.5 2.119 6.381 1 5 1Z" stroke="currentColor" stroke-width="1.2"/>
+                <circle cx="5" cy="3.5" r="1" fill="currentColor"/>
+              </svg>
+              Tu zona de cobertura
+            </p>
+            <div class="flex flex-wrap gap-1">
+              <span class="text-[10px] font-medium text-cool-800/40 border border-dashed border-cool-300 px-2 py-0.5">Tu servicio</span>
             </div>
           </div>
         </div>
 
         <a
           href="#listar"
-          class="group mt-7 inline-flex items-center gap-2 bg-ice hover:bg-ice-dark text-white font-semibold text-sm pl-5 pr-2 py-2 rounded-xl transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-lg shadow-ice/20 active:scale-[0.98]"
+          class="group mt-7 inline-flex items-center gap-2 bg-ice hover:bg-ice-dark text-white font-semibold text-sm pl-5 pr-2 py-2 rounded transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-lg shadow-ice/20 active:scale-[0.98]"
         >
           Publicá tu perfil
           <span class="w-7 h-7 rounded-full bg-black/15 flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
@@ -184,10 +182,10 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
   });
 </script>
 
-<section id="como-funciona" class="py-24 sm:py-32 bg-[#0d1620] overflow-hidden relative">
+<section id="como-funciona" class="py-24 sm:py-32 bg-[#1b1d17] overflow-hidden relative">
 
   <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" aria-hidden="true"
-    style="background: radial-gradient(circle, rgba(56,189,248,0.07) 0%, transparent 65%);">
+    style="background: radial-gradient(circle, rgba(15,138,122,0.07) 0%, transparent 65%);">
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -204,7 +202,7 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-2xl overflow-hidden stagger-children">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-md overflow-hidden stagger-children">
 
       {[
         {
@@ -223,11 +221,11 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
           body: "Directo con el técnico, sin comisiones ni formularios.",
         },
       ].map(({ n, title, body }) => (
-        <div class="relative flex flex-col gap-6 p-8 lg:p-10 bg-[#0d1620] hover:bg-white/[0.04] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+        <div class="relative flex flex-col gap-6 p-8 lg:p-10 bg-[#1b1d17] hover:bg-white/[0.04] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
           <div class="relative w-fit">
             <span
               class="font-display font-800 text-[96px] leading-none tracking-[-0.04em] select-none"
-              style="color: transparent; -webkit-text-stroke: 1px rgba(56,189,248,0.18);"
+              style="color: transparent; -webkit-text-stroke: 1px rgba(15,138,122,0.18);"
               aria-hidden="true"
             >
               {n}
