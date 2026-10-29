@@ -64,5 +64,55 @@
     "reviews": 0,
     "featured": false,
     "description": "Mi nombre es Fernando, soy técnico en refrigeración y aire acondicionado. Instalación y reparación de equipos inverter y on/off, limpieza y carga de gas — todo en split."
+  },
+  {
+    "id": "4",
+    "slug": "cristian-gabriel-larrea",
+    "name": "Cristian Gabriel Larrea",
+    "photo": "",
+    "matricula": "Certificado por CACAAV. Matriculado en aire acondicionado, técnico en refrigeración",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU",
+      "Urgencias 24hs"
+    ],
+    "phone": "5493412719124",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Más de 15 años de experiencia en el rubro, todas las marcas. Realizo reparaciones, mantenimiento preventivo, instalaciones, limpieza y carga de refrigerante. Cuento con todas las herramientas que se necesitan para realizar el trabajo de forma responsable y dar garantía."
+  },
+  {
+    "id": "5",
+    "slug": "jonatan-fabian-manzanelli",
+    "name": "Jonatan Fabián Manzanelli",
+    "photo": "",
+    "matricula": "Soy técnico certificado, instalador y reparador de aires acondicionados",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493413974691",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Presto servicio de manera independiente. Ya tengo varios trabajos realizados, doy garantía de la instalación y brindo un servicio confiable."
   }
 ]
