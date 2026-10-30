@@ -114,5 +114,33 @@
     "reviews": 0,
     "featured": false,
     "description": "Presto servicio de manera independiente. Ya tengo varios trabajos realizados, doy garantía de la instalación y brindo un servicio confiable."
+  },
+  {
+    "id": "6",
+    "slug": "sergio-dario-diaz",
+    "name": "Sergio Dario Díaz",
+    "photo": "",
+    "matricula": "Técnico en automotriz camiones y transporte de pasajeros",
+    "zones": [
+      "Alberdi",
+      "La Florida",
+      "Parque Field",
+      "Arroyito",
+      "Lomas de Alberdi",
+      "Rucci",
+      "Granadero Baigorria"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493416203329",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Servicio técnico en mantenimiento, reparaciones e instalación. Atención a empresas y particulares."
   }
 ]

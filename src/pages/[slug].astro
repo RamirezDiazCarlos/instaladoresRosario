@@ -86,7 +86,7 @@ const jsonLd = {
 
 <Layout
   title={`${instalador.name} — Instalador de Aire Acondicionado en Rosario`}
-  description={`${instalador.name}, técnico instalador de aire acondicionado en ${instalador.zones.join(', ')}. Servicios: ${instalador.services.slice(0, 3).join(', ')}. Contactalo directo por WhatsApp.`}
+  description={`${instalador.name} — instalador de aire acondicionado en ${instalador.zones.join(', ')}. ${instalador.services.slice(0, 2).join(', ')}. Contactá por WhatsApp.`}
   ogImage={instalador.photo || 'https://instaladoresrosario.com.ar/og-image.jpeg'}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} slot="head" />
