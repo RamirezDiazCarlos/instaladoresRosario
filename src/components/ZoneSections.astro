@@ -19,7 +19,19 @@ for (const g of instaladores) {
 
 const zones = [...zoneMap.entries()].sort((a, b) => b[1].length - a[1].length);
 const mainZones = zones.filter(([, g]) => g.length >= 2);
-const otherZones = zones.filter(([, g]) => g.length === 1);
+const soloZones = zones.filter(([, g]) => g.length === 1);
+
+// Agrupar por instalador: evita repetir su nombre en una píldora por cada zona
+// que cubre en solitario (p. ej. un instalador con cobertura en todo el Gran Rosario).
+const otherZonesByInstalador = new Map<string, { instalador: Instalador; zoneNames: string[] }>();
+for (const [zone, g] of soloZones) {
+  const inst = g[0];
+  if (!otherZonesByInstalador.has(inst.slug)) {
+    otherZonesByInstalador.set(inst.slug, { instalador: inst, zoneNames: [] });
+  }
+  otherZonesByInstalador.get(inst.slug)!.zoneNames.push(zone);
+}
+const otherZones = [...otherZonesByInstalador.values()].sort((a, b) => b.zoneNames.length - a.zoneNames.length);
 
 const ROSARIO_PREVIEW = 4;
 const rosarioVisible = rosarioInstaladores.slice(0, ROSARIO_PREVIEW);
@@ -159,18 +171,22 @@ const rosarioExtra = rosarioInstaladores.length - ROSARIO_PREVIEW;
 
     {otherZones.length > 0 && (
       <div class="flex flex-wrap gap-2">
-        {otherZones.map(([zone, zoneInstaladores]) => (
+        {otherZones.map(({ instalador, zoneNames }) => (
           <a
-            href={`/${zoneInstaladores[0].slug}`}
-            class="group inline-flex items-center gap-2 bg-white border border-cool-200/60 hover:border-ice/25 hover:bg-ice/[0.04] px-3.5 py-2 rounded text-[12px] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-px shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-            title={`${zoneInstaladores[0].name} — instalador de aire acondicionado en ${zone}`}
+            href={`/${instalador.slug}`}
+            class="group inline-flex items-start gap-2 bg-white border border-cool-200/60 hover:border-ice/25 hover:bg-ice/[0.04] px-3.5 py-2 rounded text-[12px] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-px shadow-[0_1px_3px_rgba(0,0,0,0.04)] max-w-full"
+            title={`${instalador.name} — instalador de aire acondicionado en ${zoneNames.join(', ')}`}
           >
-            <svg width="9" height="9" viewBox="0 0 10 10" fill="none" class="text-ice/50 flex-shrink-0 group-hover:text-ice/80 transition-colors duration-200" aria-hidden="true">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="none" class="text-ice/50 flex-shrink-0 mt-0.5 group-hover:text-ice/80 transition-colors duration-200" aria-hidden="true">
               <path d="M5 1C3.619 1 2.5 2.119 2.5 3.5C2.5 5.5 5 9 5 9C5 9 7.5 5.5 7.5 3.5C7.5 2.119 6.381 1 5 1Z" stroke="currentColor" stroke-width="1.2"/>
               <circle cx="5" cy="3.5" r="1" fill="currentColor"/>
             </svg>
-            <span class="font-semibold text-dark group-hover:text-ice transition-colors duration-200">{zone}</span>
-            <span class="text-cool-800/40 group-hover:text-cool-800/60 transition-colors duration-200">{zoneInstaladores[0].name}</span>
+            <span class="flex flex-col min-w-0">
+              <span class="font-semibold text-dark group-hover:text-ice transition-colors duration-200">{instalador.name}</span>
+              <span class="text-cool-800/40 group-hover:text-cool-800/60 transition-colors duration-200">
+                {zoneNames.slice(0, 6).join(', ')}{zoneNames.length > 6 ? ` y ${zoneNames.length - 6} más` : ''}
+              </span>
+            </span>
           </a>
         ))}
       </div>
