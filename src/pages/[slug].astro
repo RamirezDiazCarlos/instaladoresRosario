@@ -26,7 +26,7 @@ const jsonLd = {
       "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": `https://instaladoresrosario.com.ar/${instalador.slug}#business`,
       "name": `${instalador.name} — Instalador de Aire Acondicionado`,
-      "description": instalador.description,
+      "description": instalador.description || `Instalador de aire acondicionado en ${instalador.zones.join(', ')}. ${instalador.services.slice(0, 2).join(', ')}.`,
       "telephone": `+${instalador.phone}`,
       "image": instalador.photo,
       "priceRange": "$$",
@@ -199,13 +199,15 @@ const jsonLd = {
         <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 lg:gap-12">
 
           <div>
-            <section class="mb-10">
-              <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
-                <span class="w-1 h-4 rounded-full bg-ice/60 inline-block flex-shrink-0"></span>
-                Sobre el profesional
-              </h2>
-              <p class="text-cool-900 text-base leading-relaxed whitespace-pre-line max-w-prose">{instalador.description}</p>
-            </section>
+            {instalador.description && (
+              <section class="mb-10">
+                <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
+                  <span class="w-1 h-4 rounded-full bg-ice/60 inline-block flex-shrink-0"></span>
+                  Sobre el profesional
+                </h2>
+                <p class="text-cool-900 text-base leading-relaxed whitespace-pre-line max-w-prose">{instalador.description}</p>
+              </section>
+            )}
 
             <section class="mb-10">
               <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
@@ -231,15 +233,25 @@ const jsonLd = {
                 Zonas que cubre
               </h2>
               <div class="flex flex-wrap gap-2">
-                {instalador.zones.map(z => (
+                {instalador.zones.length > 15 ? (
                   <span class="inline-flex items-center gap-1.5 text-sm font-medium text-cool-900 bg-white border border-cool-200 px-3 py-1.5 rounded shadow-sm">
                     <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-cool-800 flex-shrink-0">
                       <path d="M6 1C4.343 1 3 2.343 3 4C3 6.5 6 11 6 11C6 11 9 6.5 9 4C9 2.343 7.657 1 6 1Z" stroke="currentColor" stroke-width="1.3"/>
                       <circle cx="6" cy="4" r="1.3" fill="currentColor"/>
                     </svg>
-                    {z}
+                    Todo el Gran Rosario
                   </span>
-                ))}
+                ) : (
+                  instalador.zones.map(z => (
+                    <span class="inline-flex items-center gap-1.5 text-sm font-medium text-cool-900 bg-white border border-cool-200 px-3 py-1.5 rounded shadow-sm">
+                      <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-cool-800 flex-shrink-0">
+                        <path d="M6 1C4.343 1 3 2.343 3 4C3 6.5 6 11 6 11C6 11 9 6.5 9 4C9 2.343 7.657 1 6 1Z" stroke="currentColor" stroke-width="1.3"/>
+                        <circle cx="6" cy="4" r="1.3" fill="currentColor"/>
+                      </svg>
+                      {z}
+                    </span>
+                  ))
+                )}
               </div>
             </section>
           </div>
