@@ -214,5 +214,39 @@
     "reviews": 0,
     "featured": false,
     "description": ""
+  },
+  {
+    "id": "8",
+    "slug": "ruben-farina",
+    "name": "Rubén Farina",
+    "photo": "",
+    "matricula": "Recibido en ITA Rosario, matrícula 37620-24",
+    "zones": [
+      "Todo Rosario",
+      "Granadero Baigorria",
+      "Capitán Bermúdez",
+      "Fray Luis Beltrán",
+      "Funes",
+      "Roldán",
+      "Andino",
+      "General Lagos",
+      "Villa Gobernador Gálvez",
+      "Pérez",
+      "Zavalla",
+      "Pujato"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos"
+    ],
+    "phone": "5493416274413",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Experiencia, responsabilidad, presupuestos sin cargo, horarios según disponibilidad del cliente, trabajos garantizados."
   }
 ]
