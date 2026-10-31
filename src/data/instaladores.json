@@ -248,5 +248,26 @@
     "reviews": 0,
     "featured": false,
     "description": "Experiencia, responsabilidad, presupuestos sin cargo, horarios según disponibilidad del cliente, trabajos garantizados."
+  },
+  {
+    "id": "9",
+    "slug": "fernandez-refrigeracion",
+    "name": "Fernández Refrigeración",
+    "photo": "",
+    "matricula": "",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493412628530",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": ""
   }
 ]
