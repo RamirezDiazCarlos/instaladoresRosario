@@ -269,5 +269,82 @@
     "reviews": 0,
     "featured": false,
     "description": ""
+  },
+  {
+    "id": "10",
+    "slug": "axel-ygarzabal",
+    "name": "Axel Ygarzabal",
+    "photo": "",
+    "matricula": "Técnico instalador eléctrico domiciliario y refrigeración en gral",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU",
+      "Instalación central / ducto"
+    ],
+    "phone": "5493476307298",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Muy responsable en mi trabajo y con flexibilidad en los precios, ya que estuve del otro lado."
+  },
+  {
+    "id": "11",
+    "slug": "jose-bordino",
+    "name": "José Bordino",
+    "photo": "",
+    "matricula": "",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Carga de gas refrigerante",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Reparación de equipos",
+      "Limpieza y mantenimiento preventivo",
+      "Instalación eléctrica para equipos",
+      "Urgencias 24hs",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493417203558",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": ""
+  },
+  {
+    "id": "12",
+    "slug": "mauricio-vecchio",
+    "name": "Mauricio Vecchio",
+    "photo": "",
+    "matricula": "Matriculado",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493414000537",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "10 años brindando servicios en refrigeración. Somos matriculados. Trabajos garantizados."
   }
 ]
