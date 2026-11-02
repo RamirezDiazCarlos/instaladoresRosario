@@ -5,6 +5,31 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Canonicalización — consolidar todo el tráfico en https://instaladoresrosario.com.ar (sin www, sin trailing slash)
+[[redirects]]
+  from = "https://www.instaladoresrosario.com.ar/*"
+  to = "https://instaladoresrosario.com.ar/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.instaladoresrosario.com.ar/*"
+  to = "https://instaladoresrosario.com.ar/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://instaladoresrosario.com.ar/*"
+  to = "https://instaladoresrosario.com.ar/:splat"
+  status = 301
+  force = true
+
+# Trailing slash → sin trailing slash (cubre todos los slugs con / final indexados)
+[[redirects]]
+  from = "/:slug/"
+  to = "/:slug"
+  status = 301
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]
