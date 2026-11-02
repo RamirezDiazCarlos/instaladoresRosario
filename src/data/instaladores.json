@@ -346,5 +346,80 @@
     "reviews": 0,
     "featured": false,
     "description": "10 años brindando servicios en refrigeración. Somos matriculados. Trabajos garantizados."
+  },
+  {
+    "id": "13",
+    "slug": "gonzalo-costa",
+    "name": "Gonzalo Costa",
+    "photo": "",
+    "matricula": "Técnico en instalación y reparación, apto garantías",
+    "zones": [
+      "Centro",
+      "Barrio Martín",
+      "Pichincha",
+      "Roldán",
+      "Funes",
+      "Zavalla"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493412690441",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "12 años de experiencia. Agenda con rapidez. Presupuestos económicos."
+  },
+  {
+    "id": "14",
+    "slug": "gerardo-gabriel",
+    "name": "Gerardo Gabriel",
+    "photo": "",
+    "matricula": "Técnico en refrigeración y aire acondicionado (split)",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493415932545",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Tu consulta no molesta. Presupuesto sin cargo, matriculado (MN 29564552). Avalado por la Cámara Argentina de Refrigeración."
+  },
+  {
+    "id": "15",
+    "slug": "leandro-ezequiel-ortega",
+    "name": "Leandro Ezequiel Ortega",
+    "photo": "",
+    "matricula": "Instituto ITA",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Instalación split frío/calor",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Instalación eléctrica para equipos",
+      "Urgencias 24hs"
+    ],
+    "phone": "5493415032115",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Refrigeración integral: reparaciones, instalaciones, mantenimientos preventivos y correctivos, desinstalación."
   }
 ]
