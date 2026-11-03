@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = '3 de noviembre de 2026';
+---
+
+<Layout
+  title="Política de Privacidad | InstaladoresRosario"
+  description="Cómo InstaladoresRosario recopila, usa y protege los datos de quienes visitan el sitio y de los técnicos que publican su perfil."
+>
+  <Header />
+  <main id="main-content" class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+
+      <p class="text-[10px] font-semibold text-ice/70 uppercase tracking-[0.2em] mb-4">
+        Legal
+      </p>
+      <h1 class="font-display font-800 text-dark text-3xl sm:text-4xl tracking-tight mb-3">
+        Política de Privacidad
+      </h1>
+      <p class="text-cool-800/60 text-sm mb-12">
+        Última actualización: {lastUpdated}
+      </p>
+
+      <div class="prose-custom flex flex-col gap-8 text-cool-900 text-sm leading-relaxed">
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">1. Quiénes somos</h2>
+          <p>
+            InstaladoresRosario (instaladoresrosario.com.ar) es un directorio informativo e independiente de técnicos instaladores de aire acondicionado en Rosario y el Gran Rosario. No somos una empresa de instalación ni intermediamos pagos: conectamos a quien busca un técnico con el profesional, vía WhatsApp.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">2. Qué datos recopilamos</h2>
+          <p class="mb-2">
+            <strong class="text-dark">Si navegás el sitio:</strong> no te pedimos registro ni datos personales para ver el directorio. Usamos Google Analytics para medir visitas y uso general del sitio (ver sección 4).
+          </p>
+          <p>
+            <strong class="text-dark">Si publicás tu perfil como técnico:</strong> recopilamos los datos que completás en el formulario de alta (nombre, teléfono, email, certificación declarada, zonas, servicios y descripción) a través de Netlify Forms. El teléfono y los datos profesionales se publican en tu perfil público; el email se usa solo para contactarte sobre tu publicación y no se muestra en el sitio.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">3. Contacto por WhatsApp</h2>
+          <p>
+            Los botones de WhatsApp abren una conversación directa entre vos y el técnico, fuera de nuestro sitio. Esa conversación queda sujeta a la política de privacidad de WhatsApp/Meta, no a la nuestra. No vemos ni almacenamos el contenido de esos chats.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">4. Google Analytics</h2>
+          <p>
+            Usamos Google Analytics 4 para entender cómo se usa el sitio (páginas visitadas, clics en WhatsApp, etc.). Este servicio utiliza cookies propias y de terceros de Google. Podés oponerte a este seguimiento instalando el{' '}
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-ice hover:text-ice-dark underline underline-offset-2">complemento de inhabilitación de Google Analytics</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">5. Publicidad (Google AdSense)</h2>
+          <p class="mb-2">
+            InstaladoresRosario puede mostrar anuncios de Google AdSense. Google y sus socios publicitarios pueden usar cookies para mostrar anuncios según tus visitas anteriores a este u otros sitios.
+          </p>
+          <p>
+            Podés inhabilitar la publicidad personalizada entrando a la{' '}
+            <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-ice hover:text-ice-dark underline underline-offset-2">configuración de anuncios de Google</a>, o consultar cómo Google usa estos datos en su{' '}
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-ice hover:text-ice-dark underline underline-offset-2">política de tecnologías publicitarias</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">6. Cookies</h2>
+          <p>
+            Además de las cookies de analítica y publicidad mencionadas, no usamos cookies propias para rastrearte. Podés bloquear o eliminar las cookies desde la configuración de tu navegador; tené en cuenta que esto puede afectar el funcionamiento de algunos servicios de terceros (como los anuncios).
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">7. No vendemos tus datos</h2>
+          <p>
+            No vendemos ni compartimos los datos de contacto de los técnicos con terceros, salvo lo que el propio profesional decide publicar en su perfil para que los vecinos lo contacten.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">8. Cambios en esta política</h2>
+          <p>
+            Podemos actualizar esta política cuando cambien las herramientas o servicios que usamos en el sitio (por ejemplo, al activar publicidad). La fecha de la última actualización figura arriba.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-700 text-dark text-lg mb-2">9. Contacto</h2>
+          <p>
+            Si tenés dudas sobre esta política o querés pedir la baja de tu perfil, escribinos desde la sección{' '}
+            <a href="/#listar" class="text-ice hover:text-ice-dark underline underline-offset-2">Publicá tu perfil</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
