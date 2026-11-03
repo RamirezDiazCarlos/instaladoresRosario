@@ -421,5 +421,70 @@
     "reviews": 0,
     "featured": false,
     "description": "Refrigeración integral: reparaciones, instalaciones, mantenimientos preventivos y correctivos, desinstalación."
+  },
+  {
+    "id": "16",
+    "slug": "ivan-ezequiel-chomyn",
+    "name": "Ivan Ezequiel Chomyn",
+    "photo": "",
+    "matricula": "Matriculado CACAAV",
+    "zones": [
+      "Pichincha",
+      "Centro",
+      "Abasto",
+      "Echesortu",
+      "Terminal / Agote",
+      "Alberdi",
+      "Arroyito",
+      "Refinería",
+      "Sarmiento",
+      "La Florida",
+      "Parque Field",
+      "Rucci",
+      "Lomas de Alberdi",
+      "Fisherton",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Reparación de equipos",
+      "Limpieza y mantenimiento preventivo",
+      "Carga de gas refrigerante",
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493417406354",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": ""
+  },
+  {
+    "id": "17",
+    "slug": "cristian-moreira",
+    "name": "Cristian Moreira",
+    "photo": "",
+    "matricula": "",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Reparación de equipos",
+      "Limpieza y mantenimiento preventivo",
+      "Carga de gas refrigerante",
+      "Urgencias 24hs",
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Asesoramiento en frigorías/BTU",
+      "Instalación eléctrica para equipos"
+    ],
+    "phone": "5493416211354",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Experiencia en reparación, mantenimiento e instalaciones."
   }
 ]
