@@ -486,5 +486,39 @@
     "reviews": 0,
     "featured": false,
     "description": "Experiencia en reparación, mantenimiento e instalaciones."
+  },
+  {
+    "id": "18",
+    "slug": "walter-javier-ramirez",
+    "name": "Walter Javier Ramirez",
+    "photo": "",
+    "matricula": "Técnico matriculado",
+    "zones": [
+      "Lomas de Alberdi",
+      "Rucci",
+      "Parque Field",
+      "La Florida",
+      "Arroyito",
+      "Alberdi",
+      "Refinería",
+      "Granadero Baigorria",
+      "Capitán Bermúdez",
+      "Fray Luis Beltrán"
+    ],
+    "services": [
+      "Reparación de equipos",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Instalación eléctrica para equipos",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493415107663",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Técnico en refrigeración integral con título de la UAI, matrícula al día y 4 años de experiencia en el rubro."
   }
 ]
