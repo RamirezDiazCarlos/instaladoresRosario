@@ -557,5 +557,43 @@
     "reviews": 0,
     "featured": false,
     "description": "Técnico matriculado. Experiencia, seriedad, trabajo profesional y con garantía."
+  },
+  {
+    "id": "20",
+    "slug": "marcelo-alberto-nunez",
+    "name": "Marcelo Alberto Nuñez",
+    "photo": "",
+    "matricula": "Instalador y reparación aire split",
+    "zones": [
+      "Rucci",
+      "Lomas de Alberdi",
+      "Parque Field",
+      "La Florida",
+      "Sarmiento",
+      "Alberdi",
+      "Arroyito",
+      "Refinería",
+      "Fisherton",
+      "Empalme Graneros",
+      "Ludueña",
+      "Hostal del Sol",
+      "Aldea",
+      "San Eduardo",
+      "Belgrano",
+      "Azcuénaga"
+    ],
+    "services": [
+      "Urgencias 24hs",
+      "Reparación de equipos",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Instalación split frío/calor",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493416201080",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Su consulta no molesta. Trabajos garantizados."
   }
 ]
