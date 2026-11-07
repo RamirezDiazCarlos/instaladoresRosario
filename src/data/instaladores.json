@@ -595,5 +595,56 @@
     "reviews": 0,
     "featured": false,
     "description": "Su consulta no molesta. Trabajos garantizados."
+  },
+  {
+    "id": "21",
+    "slug": "luis-rey-vega",
+    "name": "Luis Rey Vega",
+    "photo": "",
+    "matricula": "",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Reparación de equipos",
+      "Carga de gas refrigerante",
+      "Urgencias 24hs",
+      "Limpieza y mantenimiento preventivo",
+      "Instalación split frío/calor",
+      "Desinstalación y reinstalación (mudanzas)",
+      "Asesoramiento en frigorías/BTU"
+    ],
+    "phone": "5493413229551",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Mi nombre es Luis Rey, soy técnico matriculado con título recibido en la academia ITA. Trabajo hace muchos años instalando, arreglando, limpiando, etc. Buena presencia, limpieza y cuidado."
+  },
+  {
+    "id": "22",
+    "slug": "ariel-gustavo",
+    "name": "Ariel Gustavo",
+    "photo": "",
+    "matricula": "Técnico en refrigeración industrial, de hogar y del automotor, matriculado",
+    "zones": [
+      "Todo Rosario"
+    ],
+    "services": [
+      "Urgencias 24hs",
+      "Reparación de equipos",
+      "Carga de gas refrigerante",
+      "Limpieza y mantenimiento preventivo",
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Instalación central / ducto",
+      "Instalación eléctrica para equipos",
+      "Asesoramiento en frigorías/BTU",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493417218722",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Servicio técnico e instalaciones."
   }
 ]
