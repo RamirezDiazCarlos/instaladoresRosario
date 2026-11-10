@@ -646,5 +646,44 @@
     "reviews": 0,
     "featured": false,
     "description": "Servicio técnico e instalaciones."
+  },
+  {
+    "id": "23",
+    "slug": "beltran-alama",
+    "name": "Beltrán Alama",
+    "photo": "",
+    "matricula": "Técnico en Refrigeración Integral. Matrícula N° A-123-26, Reg. ITA",
+    "zones": [
+      "Alberdi",
+      "Arroyito",
+      "Refinería",
+      "La Florida",
+      "Parque Field",
+      "Rucci",
+      "Lomas de Alberdi",
+      "Sarmiento",
+      "Funes",
+      "Roldán",
+      "Granadero Baigorria",
+      "Capitán Bermúdez",
+      "Fray Luis Beltrán",
+      "Fisherton",
+      "Belgrano",
+      "Aldea",
+      "San Eduardo",
+      "Hostal del Sol"
+    ],
+    "services": [
+      "Reparación de equipos",
+      "Limpieza y mantenimiento preventivo",
+      "Instalación split frío/calor",
+      "Instalación multi-split",
+      "Desinstalación y reinstalación (mudanzas)"
+    ],
+    "phone": "5493416042032",
+    "rating": 0,
+    "reviews": 0,
+    "featured": false,
+    "description": "Alama Climatización es una empresa dedicada a brindar soluciones integrales en aire acondicionado y sistemas de calefacción en Rosario, Zona Norte, Funes, Roldán y alrededores. Nos destacamos por un servicio altamente detallista, prolijo y profesional. Nos especializamos en la instalación de equipos split y sistemas centrales, mantenimiento preventivo, service completo, cargas de gas refrigerante y reparación de fallas. Trabajamos con herramientas de precisión y materiales de primera calidad para garantizar un acabado estético impecable y el rendimiento óptimo de tus equipos. Ofrecemos atención rápida, asesoramiento personalizado y presupuestos a medida para hogares, comercios e industrias."
   }
 ]
