@@ -617,6 +617,7 @@ const zoneEntries = Object.entries(ZONES);
   };
 
   const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const isValidPhone = (value: string) => /^\+?[\d\s()-]{8,20}$/.test(value) && /\d{8,}/.test(value.replace(/\D/g, ''));
 
   const validate = (): boolean => {
     let valid = true;
@@ -624,9 +625,12 @@ const zoneEntries = Object.entries(ZONES);
     const phone = document.getElementById("f-phone") as HTMLInputElement;
     const email = document.getElementById("f-email") as HTMLInputElement;
 
-    [name, phone].forEach(f => {
-      if (!f.value.trim()) { markInvalid(f); valid = false; }
-    });
+    if (!name.value.trim()) { markInvalid(name); valid = false; }
+
+    if (!phone.value.trim() || !isValidPhone(phone.value.trim())) {
+      markInvalid(phone);
+      valid = false;
+    }
 
     if (!email.value.trim() || !isValidEmail(email.value.trim())) {
       markInvalid(email);
