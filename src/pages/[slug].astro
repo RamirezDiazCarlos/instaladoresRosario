@@ -19,6 +19,43 @@ const { instalador } = Astro.props as { instalador: Instalador };
 const waMsg = encodeURIComponent('Hola, te contacto desde InstaladoresRosario.com.ar. Necesito un técnico de aire acondicionado');
 const waLink = instalador.phone ? `https://wa.me/${instalador.phone}?text=${waMsg}` : null;
 
+// --- Enriquecimiento SEO — sin inventar datos, solo estructurar los existentes ---
+
+const zonesFormatted = instalador.zones.length > 1
+  ? `${instalador.zones.slice(0, -1).join(', ')} y ${instalador.zones[instalador.zones.length - 1]}`
+  : instalador.zones[0];
+
+// Párrafo factual auto-generado — complementa la descripción del profesional
+// (o la reemplaza si vino vacía) para que cada página tenga texto único.
+const autoDesc = `${instalador.name} ofrece, en ${zonesFormatted}: ${instalador.services.join(', ')}.${instalador.matricula ? ` Certificación declarada: ${instalador.matricula}.` : ''}`;
+
+// FAQ por perfil — 3 preguntas generadas desde los datos estructurados
+const profileFaqs = [
+  {
+    q: `¿Qué servicios realiza ${instalador.name}?`,
+    a: `${instalador.name} realiza: ${instalador.services.join(', ')}.`,
+  },
+  {
+    q: `¿En qué zonas trabaja ${instalador.name}?`,
+    a: `${instalador.name} atiende en ${zonesFormatted}.`,
+  },
+  {
+    q: `¿Cómo contacto a ${instalador.name}?`,
+    a: `Podés contactar a ${instalador.name} directamente por WhatsApp, sin intermediarios ni comisiones. El botón en esta página abre la conversación de forma directa.`,
+  },
+];
+
+// Schema FAQ por perfil → activa acordeón en el buscador de Google
+const profileFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": profileFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+  })),
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -90,6 +127,7 @@ const jsonLd = {
   ogImage={instalador.photo || 'https://instaladoresrosario.com.ar/og-image.jpeg'}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} slot="head" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(profileFaqSchema)} slot="head" />
 
   <Header />
 
@@ -199,15 +237,16 @@ const jsonLd = {
         <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 lg:gap-12">
 
           <div>
-            {instalador.description && (
-              <section class="mb-10">
-                <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
-                  <span class="w-1 h-4 rounded-full bg-ice/60 inline-block flex-shrink-0"></span>
-                  Sobre el profesional
-                </h2>
-                <p class="text-cool-900 text-base leading-relaxed whitespace-pre-line max-w-prose">{instalador.description}</p>
-              </section>
-            )}
+            <section class="mb-10">
+              <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
+                <span class="w-1 h-4 rounded-full bg-ice/60 inline-block flex-shrink-0"></span>
+                Sobre el profesional
+              </h2>
+              {instalador.description && (
+                <p class="text-cool-900 text-base leading-relaxed whitespace-pre-line max-w-prose mb-3">{instalador.description}</p>
+              )}
+              <p class="text-cool-900/75 text-sm leading-relaxed max-w-prose">{autoDesc}</p>
+            </section>
 
             <section class="mb-10">
               <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
@@ -252,6 +291,32 @@ const jsonLd = {
                     </span>
                   ))
                 )}
+              </div>
+            </section>
+
+            <!-- Preguntas frecuentes — auto-generadas desde datos estructurados; agrega texto y FAQ rich snippet -->
+            <section class="mt-10">
+              <h2 class="font-display font-700 text-dark text-lg mb-4 flex items-center gap-2">
+                <span class="w-1 h-4 rounded-full bg-ice/60 inline-block flex-shrink-0"></span>
+                Preguntas frecuentes
+              </h2>
+              <div class="space-y-2">
+                {profileFaqs.map((faq) => (
+                  <details class="group bg-white border border-cool-200 rounded overflow-hidden shadow-sm">
+                    <summary class="flex items-center justify-between gap-3 px-4 py-3.5 cursor-pointer text-sm font-semibold text-dark list-none select-none">
+                      {faq.q}
+                      <svg
+                        class="flex-shrink-0 text-ice/60 transition-transform duration-200 group-open:rotate-180"
+                        width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"
+                      >
+                        <path d="M2.5 5L7 9.5L11.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </summary>
+                    <div class="px-4 pb-4 pt-1 text-sm text-cool-900/80 leading-relaxed border-t border-cool-100">
+                      {faq.a}
+                    </div>
+                  </details>
+                ))}
               </div>
             </section>
           </div>
