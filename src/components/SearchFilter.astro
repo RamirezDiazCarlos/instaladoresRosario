@@ -232,6 +232,10 @@ const zoneEntries = Object.entries(ZONES);
 </style>
 
 <script>
+document.addEventListener('astro:page-load', () => {
+  const zoneTriggerEl = document.getElementById('zone-trigger');
+  if (!zoneTriggerEl) return; // esta página no tiene el filtro (p. ej. un perfil)
+
   const ZONES_DATA: Record<string, string[]> = {
     "Centro":      ["Centro","Pichincha","Abasto","Echesortu","Barrio Martín","República de la Sexta","Lourdes","Terminal / Agote"],
     "Norte":       ["Alberdi","Arroyito","Refinería","Sarmiento","La Florida","Parque Field","Rucci","Lomas de Alberdi"],
@@ -244,7 +248,7 @@ const zoneEntries = Object.entries(ZONES);
   const ROSARIO_ZONES = new Set(Object.values(ZONES_DATA).flat());
   const ALREDEDORES = new Set(ZONES_DATA["Alrededores"]);
 
-  const zoneTrigger   = document.getElementById('zone-trigger') as HTMLButtonElement;
+  const zoneTrigger   = zoneTriggerEl as HTMLButtonElement;
   const zonePanel     = document.getElementById('zone-panel')!;
   const zoneLabel     = document.getElementById('zone-label')!;
   const zoneTabBtns   = document.querySelectorAll<HTMLButtonElement>('.zone-tab-btn');
@@ -368,4 +372,5 @@ const zoneEntries = Object.entries(ZONES);
     setZone('', 'Zona');
     setService('', 'Servicio');
   });
+});
 </script>

@@ -90,7 +90,7 @@ const rosarioExtra = rosarioInstaladores.length - ROSARIO_PREVIEW;
                 Instaladores en Rosario
               </h3>
               <span class="inline-flex items-center gap-1 font-mono text-[10px] text-ice font-semibold bg-ice/[0.12] border border-ice/[0.25] px-2 py-0.5 tabular-nums">
-                {rosarioInstaladores.length} profesionales
+                <span data-count-to={rosarioInstaladores.length}>0</span> profesionales
               </span>
             </div>
 
@@ -121,8 +121,9 @@ const rosarioExtra = rosarioInstaladores.length - ROSARIO_PREVIEW;
           <span class="hidden sm:block font-display font-800 leading-none select-none pointer-events-none tabular-nums text-ice/[0.12] flex-shrink-0 self-end"
             style="font-size: clamp(72px, 9vw, 110px); line-height: 1;"
             aria-hidden="true"
+            data-count-to={rosarioInstaladores.length}
           >
-            {rosarioInstaladores.length}
+            0
           </span>
         </div>
 
