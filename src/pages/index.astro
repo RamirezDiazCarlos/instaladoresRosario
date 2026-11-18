@@ -144,13 +144,29 @@ const itemListSchema = {
       transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
   }
   .stagger-children.visible > * { opacity:1; transform:translateY(0); }
-  .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
-  .stagger-children.visible > *:nth-child(2) { transition-delay: 80ms; }
-  .stagger-children.visible > *:nth-child(3) { transition-delay: 160ms; }
-  .stagger-children.visible > *:nth-child(4) { transition-delay: 240ms; }
-  .stagger-children.visible > *:nth-child(5) { transition-delay: 320ms; }
-  .stagger-children.visible > *:nth-child(6) { transition-delay: 400ms; }
-  .stagger-children.visible > *:nth-child(n+7) { transition-delay: 480ms; }
+
+  /* sibling-index() evita repetir una regla :nth-child(N) por cada posición;
+     el delay se tapea en el 6to hijo (480ms) para que listas largas no demoren. */
+  @supports (transition-delay: calc(sibling-index() * 1ms)) {
+    .stagger-children.visible > * {
+      transition-delay: calc(min(sibling-index() - 1, 6) * 80ms);
+    }
+  }
+
+  /* Fallback para navegadores sin sibling-index() (Newly available desde ago. 2026) */
+  @supports not (transition-delay: calc(sibling-index() * 1ms)) {
+    .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger-children.visible > *:nth-child(2) { transition-delay: 80ms; }
+    .stagger-children.visible > *:nth-child(3) { transition-delay: 160ms; }
+    .stagger-children.visible > *:nth-child(4) { transition-delay: 240ms; }
+    .stagger-children.visible > *:nth-child(5) { transition-delay: 320ms; }
+    .stagger-children.visible > *:nth-child(6) { transition-delay: 400ms; }
+    .stagger-children.visible > *:nth-child(n+7) { transition-delay: 480ms; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stagger-children.visible > * { transition-delay: 0ms; }
+  }
 </style>
 
 <script>
